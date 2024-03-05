@@ -30,8 +30,24 @@
             <cxf:logging/>
         </cxf:features>
     </cxf:bus>
-    <jaxws:endpoint xmlns:s="http://apache.org/hello_world_soap_http" id="server" implementor="demo.wssec.server.GreeterImpl" endpointName="s:SoapPort" serviceName="s:SOAPService" address="http://localhost:9001/SoapContext/SoapPort" wsdlLocation="wsdl/hello_world.wsdl">
+<!--hello world:
+        <wsdl:service name="SOAPService">
+        <wsdl:port binding="tns:Greeter_SOAPBinding" name="SoapPort">
+            <soap:address location="http://localhost:9001/SoapContext/SoapPort"/>
+        </wsdl:port>
+    </wsdl:service>
+    -->
+
+<!--    	<service name="RespondingGatewayQuery_Service">
+		<port name="RespondingGatewayQuery_Port_Soap12" binding="ihe:RespondingGatewayQuery_Binding_Soap12">
+    <soap12:address location="http://localhost:9001/RespondingGatewayQuery_Service"/>
+</port>
+        </service>
+        -->
+    <jaxws:endpoint xmlns:s="http://apache.org/hello_world_soap_http" id="server" implementor="demo.wssec.server.DocumentSomethingImpl" endpointName="s:RespondingGatewayQuery_Port_Soap12" serviceName="s:RespondingGatewayQuery_Service" address="http://localhost:9001/RespondingGatewayQuery_Service" wsdlLocation="wsdl/XCARespondingGatewayQuery.wsdl">
         <jaxws:properties>
+<!--            url til jwk -->
+<!--            issuer = helseid-sts.nhn.no -->
             <entry key="security.signature.username" value="myservicekey"/>
             <entry key="security.callback-handler" value="demo.wssec.server.ServerCallbackHandler"/>
             <entry key="security.signature.properties" value="serviceKeystore.properties"/>
