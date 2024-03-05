@@ -52,7 +52,22 @@
                             <goal>wsdl2java</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>generate-sources-ihe</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/wsdl/XCARespondingGatewayQuery.wsdl</wsdl>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
                 </executions>
+
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
